@@ -80,7 +80,7 @@ class War {
         let dañoSaxonRandom = SaxonRandom.receiveDamage(fuerzaVikingoRandom);
 
         if (SaxonRandom.health === 0) {
-            let index = this.saxonArmy.indexOf(VikingoRandom);
+            let index = this.saxonArmy.indexOf(SaxonRandom);
             this.saxonArmy.splice(index, 1)
         }
 
@@ -100,7 +100,7 @@ class War {
         let dañoVikingoRandom = VikingoRandom.receiveDamage(fuerzaSaxonRandom);
 
         if (VikingoRandom.health === 0) {
-            let index = this.vikingArmy.indexOf(SaxonRandom);
+            let index = this.vikingArmy.indexOf(VikingoRandom);
             this.vikingArmy.splice(index, 1)
         }
         
@@ -111,10 +111,12 @@ class War {
     showStatus = () => {
         if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {
             return "Vikings and Saxons are still in the thick of battle."
-        }else if (this.saxonArmy.length === 0) {
-            return "Vikings have won the war of the century!"
-        } else if (this.vikingArmy.length === 0) {
+        }
+        if (this.vikingArmy.length === 0) {
             return "Saxons have fought for their lives and survived another day..."
+        }
+        if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
         }
     }
 }
