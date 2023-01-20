@@ -1,11 +1,19 @@
 // Soldier
-class Soldier {}
+class Soldier {
+
+}
 
 // Viking
-class Viking {}
+class Viking {
+
+}
 
 // Saxon
-class Saxon {}
+class Saxon {
+
+}
 
 // War
-class War {}
+class War {
+    
+}
