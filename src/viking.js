@@ -55,5 +55,66 @@ class Saxon extends Soldier {
 
 // War
 class War {
+    constructor () {
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
+    
+    addViking = (Viking) => {
+        this.vikingArmy.push(Viking);
+    }
 
+    addSaxon = (Saxon) => {
+        this.saxonArmy.push(Saxon);
+    }
+
+    vikingAttack = () => {
+        
+        let vikingoAleatorio = Math.floor(Math.random()*this.vikingArmy.length);
+        let saxonAleatorio = Math.floor(Math.random()*this.saxonArmy.length);
+
+        let VikingoRandom = this.vikingArmy[vikingoAleatorio];
+        let SaxonRandom = this.saxonArmy[saxonAleatorio];
+        
+        let fuerzaVikingoRandom = VikingoRandom.strength;
+        let dañoSaxonRandom = SaxonRandom.receiveDamage(fuerzaVikingoRandom);
+
+        if (SaxonRandom.health === 0) {
+            let index = this.saxonArmy.indexOf(VikingoRandom);
+            this.saxonArmy.splice(index, 1)
+        }
+
+        return dañoSaxonRandom;
+
+    }
+
+    saxonAttack = () => {
+
+        let vikingoAleatorio = Math.floor(Math.random()*this.vikingArmy.length);
+        let saxonAleatorio = Math.floor(Math.random()*this.saxonArmy.length);
+
+        let VikingoRandom = this.vikingArmy[vikingoAleatorio];
+        let SaxonRandom = this.saxonArmy[saxonAleatorio];
+
+        let fuerzaSaxonRandom = SaxonRandom.strength;
+        let dañoVikingoRandom = VikingoRandom.receiveDamage(fuerzaSaxonRandom);
+
+        if (VikingoRandom.health === 0) {
+            let index = this.vikingArmy.indexOf(SaxonRandom);
+            this.vikingArmy.splice(index, 1)
+        }
+        
+        return dañoVikingoRandom;
+
+    }
+
+    showStatus = () => {
+        if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {
+            return "Vikings and Saxons are still in the thick of battle."
+        }else if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        }
+    }
 }
