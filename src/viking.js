@@ -79,7 +79,7 @@ class War {
         let fuerzaVikingoRandom = VikingoRandom.strength;
         let dañoSaxonRandom = SaxonRandom.receiveDamage(fuerzaVikingoRandom);
 
-        if (SaxonRandom.health === 0) {
+        if (SaxonRandom.health < 0) {
             let index = this.saxonArmy.indexOf(SaxonRandom);
             this.saxonArmy.splice(index, 1)
         }
